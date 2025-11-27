@@ -1,0 +1,34 @@
+/*
+5. Leia um vetor de 10 posições.
+   Contar e escrever quantos valores pares ele possui.
+*/
+
+#include <stdio.h>   // Biblioteca padrão para entrada e saída (printf, scanf)
+#include <stdlib.h>  // Biblioteca padrão (para system("pause"))
+
+int main()  // Função principal do programa
+{
+    int A[10];        // Declara um vetor A com 10 posições (índices de 0 a 9)
+    int contador = 0; // Variável para contar quantos números pares existem no vetor
+
+    // ---------------------- ENTRADA DE DADOS ----------------------
+    printf("Digite 10 numeros inteiros:\n");  // Pede ao usuário para digitar os 10 números
+
+    for (int i = 0; i < 10; i++)  // Laço de repetição que se repete 10 vezes
+    {
+        printf("A[%d]: ", i);   // Mostra o índice do vetor que será preenchido
+        scanf("%d", &A[i]);     // Lê o valor digitado e armazena em A[i]
+
+        // ---------------------- TESTE DE PARIDADE ----------------------
+        if (A[i] % 2 == 0)      // Verifica se o número é par (resto da divisão por 2 igual a 0)
+        {
+            contador++;         // Se for par, incrementa o contador em 1
+        }
+    }
+
+    // ---------------------- SAÍDA DE DADOS ----------------------
+    printf("\nO vetor possui %d valores pares.\n", contador);  // Exibe quantos números pares foram encontrados
+
+    system("pause");  // Pausa o programa (útil no Windows)
+    return 0;         // Indica que o programa terminou corretamente
+}
