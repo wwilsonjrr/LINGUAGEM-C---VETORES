@@ -1,0 +1,51 @@
+/*
+4. Faça um programa que leia um vetor de 8 posições e, em seguida, leia também
+   dois valores X e Y quaisquer correspondentes a duas posições no vetor.
+   Ao final, seu programa deverá escrever a soma dos valores encontrados
+   nas respectivas posições X e Y.
+*/
+
+#include <stdio.h>   // Biblioteca padrão de entrada e saída (para printf e scanf)
+#include <stdlib.h>  // Biblioteca padrão (para system("pause"))
+
+int main()  // Função principal do programa
+{
+    int A[8];   // Declara um vetor de 8 posições para armazenar números inteiros
+    int X, Y;   // Variáveis para armazenar as posições escolhidas pelo usuário
+    int soma;   // Variável para guardar o resultado da soma
+
+    // ---------------------- ENTRADA DE DADOS ----------------------
+    printf("Digite 8 numeros inteiros:\n");  // Mensagem pedindo os 8 valores
+
+    // Laço para ler os 8 números e armazenar no vetor A
+    for (int i = 0; i < 8; i++)  // O laço repete 8 vezes (i = 0 até i = 7)
+    {
+        printf("A[%d]: ", i);   // Mostra qual posição está sendo preenchida
+        scanf("%d", &A[i]);     // Lê o valor digitado e armazena na posição A[i]
+    }
+
+    // ---------------------- LEITURA DAS POSIÇÕES ----------------------
+    printf("\nDigite o valor de X (posicao entre 0 e 7): ");  // Pede a posição X
+    scanf("%d", &X);  // Lê e armazena a posição X informada pelo usuário
+
+    printf("Digite o valor de Y (posicao entre 0 e 7): ");  // Pede a posição Y
+    scanf("%d", &Y);  // Lê e armazena a posição Y informada pelo usuário
+
+    // ---------------------- PROCESSAMENTO ----------------------
+    // Verifica se as posições digitadas estão dentro dos limites do vetor (0 a 7)
+    if (X < 0 || X > 7 || Y < 0 || Y > 7)
+    {
+        // Caso alguma das posições seja inválida, mostra uma mensagem de erro
+        printf("\nErro: as posicoes devem estar entre 0 e 7!\n");
+    }
+    else  // Caso contrário, as posições são válidas
+    {
+        soma = A[X] + A[Y];  // Soma os valores das posições X e Y do vetor
+        printf("\nA soma dos valores nas posicoes %d e %d eh: %d\n", X, Y, soma);
+        // Exibe a soma formatada com as posições e o resultado
+    }
+
+    // ---------------------- FINALIZAÇÃO ----------------------
+    system("pause");  // Pausa o programa antes de encerrar (apenas no Windows)
+    return 0;         // Retorna 0, indicando que o programa terminou corretamente
+}
