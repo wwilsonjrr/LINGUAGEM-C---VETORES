@@ -1,0 +1,32 @@
+/*
+8. Crie um programa que lê 6 valores inteiros e, em seguida,
+   mostre na tela os valores lidos na ordem inversa.
+*/
+
+#include <stdio.h>   // Biblioteca padrão para entrada e saída (printf, scanf)
+#include <stdlib.h>  // Biblioteca padrão (para system("pause"))
+
+int main()  // Função principal — início da execução do programa
+{
+    int A[6];  // Declara um vetor de 6 posições para armazenar os valores inteiros
+
+    // ---------------------- ENTRADA DE DADOS ----------------------
+    printf("Digite 6 numeros inteiros:\n");  // Solicita os números ao usuário
+
+    for (int i = 0; i < 6; i++)  // Laço para ler os 6 números
+    {
+        printf("A[%d]: ", i);   // Mostra qual posição está sendo preenchida (de 0 a 5)
+        scanf("%d", &A[i]);     // Lê o número digitado e armazena no vetor na posição A[i]
+    }
+
+    // ---------------------- SAÍDA DE DADOS EM ORDEM INVERSA ----------------------
+    printf("\nValores em ordem inversa:\n");  // Exibe o título da saída
+
+    for (int i = 5; i >= 0; i--)  // Laço que percorre o vetor de trás para frente (de 5 até 0)
+    {
+        printf("A[%d] = %d\n", i, A[i]);  // Mostra o índice e o valor armazenado na posição
+    }
+
+    system("pause");  // Pausa o programa antes de encerrar (Windows)
+    return 0;         // Indica que o programa terminou corretamente
+}
