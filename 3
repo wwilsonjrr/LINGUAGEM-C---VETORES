@@ -1,0 +1,50 @@
+/*
+3. Ler um conjunto de números reais, armazenando-o em um vetor e calcular o
+   quadrado das componentes deste vetor, armazenando o resultado em outro vetor.
+   Os conjuntos têm 10 elementos cada. Imprimir todos os conjuntos.
+*/
+
+#include <stdio.h>   // Biblioteca padrão para entrada e saída de dados (printf, scanf)
+#include <stdlib.h>  // Biblioteca padrão (para system("pause"))
+#include <math.h>    // Biblioteca matemática (para usar a função pow)
+
+int main()  // Função principal do programa — ponto de partida
+{
+    float A[10];  // Declara o vetor A com 10 posições para armazenar números reais (float)
+    float B[10];  // Declara o vetor B com 10 posições para armazenar os quadrados dos valores de A
+
+    // ------------------ ENTRADA DE DADOS ------------------
+    printf("Digite 10 numeros reais:\n");  // Pede ao usuário que digite 10 números reais
+
+    for (int i = 0; i < 10; i++)  // Laço que se repete 10 vezes (de 0 até 9)
+    {
+        printf("A[%d]: ", i);    // Mostra qual posição do vetor está sendo preenchida
+        scanf("%f", &A[i]);      // Lê um número real digitado pelo usuário e armazena em A[i]
+    }
+
+    // ------------------ PROCESSAMENTO ------------------
+    for (int i = 0; i < 10; i++)  // Percorre novamente o vetor A
+    {
+        B[i] = pow(A[i], 2);  // Calcula o quadrado de A[i] e armazena o resultado em B[i]
+                              // Exemplo: se A[i] = 2.0, então B[i] = 4.0
+    }
+
+    // ------------------ SAÍDA DE DADOS ------------------
+    printf("\nVetor A (valores originais):\n");  // Exibe o título do primeiro conjunto
+
+    for (int i = 0; i < 10; i++)  // Percorre o vetor A para exibir os valores originais
+    {
+        printf("A[%d] = %.2f\n", i, A[i]);  // Mostra o índice e o valor armazenado em A com 2 casas decimais
+    }
+
+    printf("\nVetor B (quadrado dos valores):\n");  // Exibe o título do segundo conjunto
+
+    for (int i = 0; i < 10; i++)  // Percorre o vetor B para mostrar os resultados calculados
+    {
+        printf("B[%d] = %.2f\n", i, B[i]);  // Mostra o índice e o valor de B com 2 casas decimais
+    }
+
+    system("pause");  // Pausa a execução (útil no Windows para manter a tela aberta)
+    return 0;         // Retorna 0 indicando que o programa terminou corretamente
+}
+
