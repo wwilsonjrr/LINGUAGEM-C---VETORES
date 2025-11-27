@@ -1,0 +1,56 @@
+/*
+7. Escreva um programa que leia 10 números inteiros e os armazene em um vetor.
+   Imprima o vetor, o maior elemento e a posição que ele se encontra.
+*/
+
+#include <stdio.h>   // Biblioteca padrão para entrada e saída de dados (printf, scanf)
+#include <stdlib.h>  // Biblioteca padrão (para system("pause"))
+
+int main()  // Função principal — onde o programa começa sua execução
+{
+    int A[10];    // Declara um vetor chamado A com 10 posições (índices de 0 a 9)
+    int maior;    // Variável para armazenar o maior número encontrado
+    int posicao;  // Variável para armazenar a posição (índice) onde o maior número está
+
+    // ---------------------- ENTRADA DE DADOS ----------------------
+    printf("Digite 10 numeros inteiros:\n");  // Solicita que o usuário digite 10 números
+
+    // Laço de repetição que executa 10 vezes (de i = 0 até i = 9)
+    for (int i = 0; i < 10; i++)
+    {
+        printf("A[%d]: ", i);  // Mostra ao usuário qual posição está sendo preenchida
+        scanf("%d", &A[i]);    // Lê um número inteiro digitado e armazena em A[i]
+    }
+
+    // ---------------------- PROCESSAMENTO ----------------------
+    // Inicializa as variáveis 'maior' e 'posicao' com o primeiro valor e posição do vetor
+    maior = A[0];   // Assume inicialmente que o primeiro elemento é o maior
+    posicao = 0;    // Assume que o maior valor está na posição 0
+
+    // Laço para percorrer o vetor a partir da segunda posição (índice 1)
+    for (int i = 1; i < 10; i++)
+    {
+        // Verifica se o elemento atual A[i] é maior que o valor armazenado em 'maior'
+        if (A[i] > maior)
+        {
+            maior = A[i];   // Atualiza o valor da variável 'maior'
+            posicao = i;    // Guarda a posição (índice) do novo maior valor encontrado
+        }
+    }
+
+    // ---------------------- SAÍDA DE DADOS ----------------------
+    printf("\nValores do vetor:\n");  // Exibe um título antes de mostrar os valores armazenados
+
+    // Laço para exibir todos os valores do vetor, um por linha
+    for (int i = 0; i < 10; i++)
+    {
+        printf("A[%d] = %d\n", i, A[i]);  // Mostra o índice e o valor correspondente
+    }
+
+    // Exibe o maior valor e a posição onde ele se encontra
+    printf("\nO maior valor do vetor eh: %d\n", maior);
+    printf("Ele se encontra na posicao: %d\n", posicao);
+
+    system("pause");  // Pausa a execução do programa (útil no Windows)
+    return 0;         // Finaliza o programa e retorna 0 (indica que terminou corretamente)
+}
