@@ -1,0 +1,48 @@
+/*
+6. Faça um programa que receba do usuário um vetor com 10 posições.
+   Em seguida, deverá ser impresso o maior e o menor elemento do vetor.
+*/
+
+#include <stdio.h>   // Biblioteca padrão para entrada e saída (printf, scanf)
+#include <stdlib.h>  // Biblioteca padrão (para system("pause"))
+
+int main()  // Função principal do programa
+{
+    int A[10];       // Declara um vetor de 10 posições
+    int maior, menor; // Variáveis para armazenar o maior e o menor valor
+
+    // ---------------------- ENTRADA DE DADOS ----------------------
+    printf("Digite 10 numeros inteiros:\n");  // Solicita que o usuário digite 10 números
+
+    for (int i = 0; i < 10; i++)  // Laço para ler os 10 números do usuário
+    {
+        printf("A[%d]: ", i);   // Mostra a posição atual que está sendo preenchida
+        scanf("%d", &A[i]);     // Lê o valor digitado e armazena em A[i]
+    }
+
+    // ---------------------- PROCESSAMENTO ----------------------
+    // Inicializa as variáveis maior e menor com o primeiro elemento do vetor
+    maior = A[0];
+    menor = A[0];
+
+    // Percorre o vetor a partir da segunda posição (índice 1)
+    for (int i = 1; i < 10; i++)
+    {
+        if (A[i] > maior)  // Se o elemento atual for maior que o valor armazenado em 'maior'
+        {
+            maior = A[i];  // Atualiza o valor de 'maior'
+        }
+
+        if (A[i] < menor)  // Se o elemento atual for menor que o valor armazenado em 'menor'
+        {
+            menor = A[i];  // Atualiza o valor de 'menor'
+        }
+    }
+
+    // ---------------------- SAÍDA DE DADOS ----------------------
+    printf("\nO maior valor do vetor eh: %d\n", maior);  // Exibe o maior valor encontrado
+    printf("O menor valor do vetor eh: %d\n", menor);    // Exibe o menor valor encontrado
+
+    system("pause");  // Pausa o programa antes de encerrar (Windows)
+    return 0;         // Indica que o programa terminou corretamente
+}
