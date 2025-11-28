@@ -1,0 +1,55 @@
+/*
+13. Fazer um programa para ler 5 valores e, em seguida,
+    mostrar a posição onde se encontram o maior e o menor valor.
+*/
+
+#include <stdio.h>   // Inclui a biblioteca padrão para entrada e saída (printf, scanf)
+#include <stdlib.h>  // Inclui a biblioteca padrão (para system("pause"))
+
+int main()  // Função principal — onde o programa começa
+{
+    float valores[5];  // Cria um vetor com 5 posições para armazenar números reais
+    int posMaior = 0;  // Variável que guardará a posição do maior valor (índice)
+    int posMenor = 0;  // Variável que guardará a posição do menor valor (índice)
+
+    // ---------------------- ENTRADA DE DADOS ----------------------
+    printf("Digite 5 valores reais:\n");  // Mensagem inicial pedindo ao usuário os valores
+
+    for (int i = 0; i < 5; i++)  // Início do laço que vai de 0 até 4 (5 repetições)
+    {
+        printf("Valor %d: ", i + 1);  // Exibe o número da entrada (de 1 até 5)
+        scanf("%f", &valores[i]);     // Lê um número real digitado e guarda na posição i do vetor
+
+        // ---------------------- PROCESSAMENTO ----------------------
+        if (i == 0)  // Na primeira repetição (i == 0)
+        {
+            // O primeiro valor serve como referência inicial
+            posMaior = 0;  // O maior está, por enquanto, na posição 0
+            posMenor = 0;  // O menor também está, por enquanto, na posição 0
+        }
+        else  // A partir do segundo valor em diante (i > 0)
+        {
+            if (valores[i] > valores[posMaior])  // Compara o valor atual com o maior anterior
+                posMaior = i;                    // Se for maior, atualiza a posição do maior valor
+
+            if (valores[i] < valores[posMenor])  // Compara o valor atual com o menor anterior
+                posMenor = i;                    // Se for menor, atualiza a posição do menor valor
+        }
+    }
+
+    // ---------------------- SAÍDA DE DADOS ----------------------
+    printf("\nValores digitados:\n");  // Mensagem de separação
+
+    for (int i = 0; i < 5; i++)  // Novo laço para mostrar os valores armazenados
+    {
+        printf("Posicao %d -> %.2f\n", i, valores[i]);  // Exibe cada valor e sua posição no vetor  // A mensagem é PARA O USUÁRIO, não para o vetor.
+    }
+
+    // Exibe os resultados finais
+    printf("\nO maior valor eh %.2f e esta na posicao %d.\n", valores[posMaior], posMaior);
+    printf("O menor valor eh %.2f e esta na posicao %d.\n", valores[posMenor], posMenor);
+
+    system("pause");  // Pausa a execução antes de fechar (útil no Windows)
+    return 0;         // Indica que o programa terminou corretamente
+}
+
