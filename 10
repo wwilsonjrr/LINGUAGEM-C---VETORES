@@ -1,0 +1,40 @@
+/*
+10. Faça um programa para ler a nota da prova de 15 alunos e armazenar num vetor,
+    calcule e imprima a média geral.
+*/
+
+#include <stdio.h>   // Biblioteca padrão para entrada e saída (printf, scanf)
+#include <stdlib.h>  // Biblioteca padrão (para system("pause"))
+
+int main()  // Função principal do programa
+{
+    float notas[15];   // Vetor que armazenará as notas dos 15 alunos
+    float soma = 0.0;  // Variável para acumular a soma das notas
+    float media;       // Variável que armazenará a média geral
+
+    // ---------------------- ENTRADA DE DADOS ----------------------
+    printf("Digite as notas dos 15 alunos:\n");  // Mensagem inicial
+
+    for (int i = 0; i < 15; i++)  // Laço para ler as 15 notas
+    {
+        printf("Nota do aluno %d: ", i + 1);  // Mostra o número do aluno (1 a 15)
+        scanf("%f", &notas[i]);  // Lê a nota e armazena na posição i do vetor
+
+        soma += notas[i];  // Acumula o valor da nota na variável soma
+    }
+
+    // ---------------------- PROCESSAMENTO ----------------------
+    media = soma / 15;  // Calcula a média geral (soma dividida pela quantidade de alunos)
+
+    // ---------------------- SAÍDA DE DADOS ----------------------
+    printf("\nNotas digitadas:\n");
+    for (int i = 0; i < 15; i++)  // Mostra todas as notas armazenadas
+    {
+        printf("Aluno %2d: %.2f\n", i + 1, notas[i]);  // Exibe o número do aluno e sua nota com 2 casas decimais
+    }
+
+    printf("\nMedia geral da turma: %.2f\n", media);  // Mostra o resultado da média geral
+
+    system("pause");  // Pausa o programa antes de encerrar (Windows)
+    return 0;         // Indica que o programa terminou corretamente
+}
