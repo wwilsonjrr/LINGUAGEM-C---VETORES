@@ -1,0 +1,51 @@
+/*
+18. Faça um programa que leia um vetor de 10 números.
+    Leia um número x. Conte os múltiplos de x no vetor e mostre-os na tela.
+*/
+
+#include <stdio.h>   // Biblioteca padrão de entrada e saída (printf, scanf)
+#include <stdlib.h>  // Biblioteca padrão (para system("pause"))
+
+int main()  // Início da função principal
+{
+    int vetor[10];   // Declara um vetor de 10 posições para armazenar os números
+    int x;           // Número que será usado como base para verificar múltiplos
+    int contador = 0; // Contador de quantos múltiplos foram encontrados
+
+    // ---------------------- ENTRADA DE DADOS ----------------------
+    printf("Digite 10 numeros inteiros:\n");  // Solicita os valores ao usuário
+
+    for (int i = 0; i < 10; i++)  // Laço para ler os 10 números
+    {
+        printf("Vetor[%d]: ", i);  // Mostra o índice atual
+        scanf("%d", &vetor[i]);    // Lê o valor digitado e armazena no vetor
+    }
+
+    printf("\nDigite um numero inteiro x: ");  // Pede o valor de x
+    scanf("%d", &x);  // Lê o valor de x
+
+    // ---------------------- PROCESSAMENTO ----------------------
+    printf("\nMultiplos de %d encontrados no vetor:\n", x);  // Cabeçalho da saída
+
+    for (int i = 0; i < 10; i++)  // Percorre todo o vetor
+    {
+        if (vetor[i] % x == 0)  // Verifica se o elemento é múltiplo de x
+        {
+            printf("%d \n", vetor[i]);  // Exibe o múltiplo encontrado
+            contador++;               // Incrementa o contador
+        }
+    }
+
+    // ---------------------- SAÍDA DE DADOS ----------------------
+    if (contador == 0)  // Se nenhum múltiplo foi encontrado
+    {
+        printf("\nNenhum multiplo de %d foi encontrado.\n", x);
+    }
+    else  // Caso contrário, mostra a quantidade total
+    {
+        printf("\n\nTotal de multiplos de %d: %d\n", x, contador);
+    }
+
+    system("pause");  // Pausa o programa (útil no Windows)
+    return 0;         // Indica que o programa terminou corretamente
+}
