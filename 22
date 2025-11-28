@@ -1,0 +1,59 @@
+/*
+22. Faça um programa que leia dois vetores de 10 posições e calcule outro vetor contendo:
+    - nas posições pares, os valores do primeiro vetor;
+    - nas posições ímpares, os valores do segundo vetor.
+*/
+
+#include <stdio.h>   // Biblioteca padrão de entrada e saída (printf, scanf)
+#include <stdlib.h>  // Biblioteca padrão (para system("pause"))
+
+int main()  // Início da função principal
+{
+    int A[10];  // Declara o primeiro vetor (A) com 10 posições inteiras
+    int B[10];  // Declara o segundo vetor (B) com 10 posições inteiras
+    int C[10];  // Declara o vetor resultante (C), também com 10 posições
+
+    // ------------------ ENTRADA DE DADOS ------------------
+    printf("Digite 10 numeros inteiros para o vetor A:\n");  // Pede os valores para o vetor A
+
+    for (int i = 0; i < 10; i++)  // Laço para preencher o vetor A
+    {
+        printf("A[%d]: ", i);   // Exibe o índice atual
+        scanf("%d", &A[i]);     // Lê o número digitado e armazena na posição i de A
+    }
+
+    printf("\nDigite 10 numeros inteiros para o vetor B:\n");  // Pede os valores para o vetor B
+
+    for (int i = 0; i < 10; i++)  // Laço para preencher o vetor B
+    {
+        printf("B[%d]: ", i);   // Exibe o índice atual
+        scanf("%d", &B[i]);     // Lê o número digitado e armazena na posição i de B
+    }
+
+    // ------------------ PROCESSAMENTO ------------------
+    // Agora criamos o vetor C:
+    // - nas posições pares (0, 2, 4, 6, 8) ele receberá valores do vetor A
+    // - nas posições ímpares (1, 3, 5, 7, 9) ele receberá valores do vetor B
+    for (int i = 0; i < 10; i++)
+    {
+        if (i % 2 == 0)  // Se o índice for par
+        {
+            C[i] = A[i];  // Copia o valor de A para C
+        }
+        else  // Se o índice for ímpar
+        {
+            C[i] = B[i];  // Copia o valor de B para C
+        }
+    }
+
+    // ------------------ SAÍDA DE DADOS ------------------
+    printf("\nVetor resultante C (pares de A e impares de B):\n");
+
+    for (int i = 0; i < 10; i++)  // Percorre o vetor resultante
+    {
+        printf("C[%d] = %d\n", i, C[i]);  // Exibe o índice e o valor correspondente em C
+    }
+
+    system("pause");  // Pausa a execução (útil no Windows)
+    return 0;         // Indica que o programa terminou corretamente
+}
