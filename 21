@@ -1,0 +1,50 @@
+/*
+21. Faça um programa que receba do usuário dois vetores, A e B, com 10 números inteiros cada.
+    Crie um novo vetor denominado C calculando C = A - B.
+    Mostre na tela os dados do vetor C.
+*/
+
+#include <stdio.h>   // Inclui a biblioteca padrão de entrada e saída (para usar printf e scanf)
+#include <stdlib.h>  // Inclui a biblioteca padrão do sistema (para usar system("pause"))
+
+int main()  // Função principal do programa — onde tudo começa
+{
+    int A[10];  // Declara o vetor A com 10 posições do tipo inteiro
+    int B[10];  // Declara o vetor B com 10 posições do tipo inteiro
+    int C[10];  // Declara o vetor C, também com 10 posições inteiras (armazenará o resultado)
+
+    // -------------------- ENTRADA DE DADOS --------------------
+    printf("Digite 10 numeros inteiros para o vetor A:\n");  // Mensagem inicial para o usuário
+
+    for (int i = 0; i < 10; i++)  // Laço que percorre todas as 10 posições do vetor A
+    {
+        printf("A[%d]: ", i);  // Mostra qual posição o usuário está preenchendo
+        scanf("%d", &A[i]);    // Lê um número inteiro e armazena no vetor A, posição i
+    }
+
+    printf("\nDigite 10 numeros inteiros para o vetor B:\n");  // Mensagem para o segundo vetor
+
+    for (int i = 0; i < 10; i++)  // Laço que percorre todas as 10 posições do vetor B
+    {
+        printf("B[%d]: ", i);  // Mostra qual posição o usuário está preenchendo
+        scanf("%d", &B[i]);    // Lê um número inteiro e armazena no vetor B, posição i
+    }
+
+    // -------------------- PROCESSAMENTO --------------------
+    // Aqui o programa calcula o vetor C a partir da diferença A - B
+    for (int i = 0; i < 10; i++)  // Laço que percorre as 10 posições dos vetores
+    {
+        C[i] = A[i] - B[i];  // Calcula a subtração entre A e B na mesma posição e guarda em C
+    }
+
+    // -------------------- SAÍDA DE DADOS --------------------
+    printf("\nVetor resultante C = A - B:\n");  // Mensagem informando o resultado
+
+    for (int i = 0; i < 10; i++)  // Laço que percorre todas as posições do vetor C
+    {
+        printf("C[%d] = %d\n", i, C[i]);  // Exibe o índice (posição) e o valor correspondente em C
+    }
+
+    system("pause");  // Pausa o programa antes de encerrar (funciona no Windows)
+    return 0;         // Indica que o programa terminou corretamente
+}
