@@ -1,0 +1,48 @@
+/*
+14. Faça um programa que leia um vetor de 10 posições
+    e verifique se existem valores iguais e os escreva na tela.
+*/
+
+#include <stdio.h>   // Biblioteca padrão para entrada e saída (printf, scanf)
+#include <stdlib.h>  // Biblioteca padrão (para system("pause"))
+
+int main()  // Função principal — início do programa
+{
+    int vetor[10];  // Cria um vetor com 10 posições para armazenar os números inteiros
+    int repetido = 0;  // Indicador flag (ainda não encontrei repetido)
+
+    // ---------------------- ENTRADA DE DADOS ----------------------
+    printf("Digite 10 numeros inteiros:\n");
+
+    for (int i = 0; i < 10; i++)  // Lê os 10 números do usuário
+    {
+        printf("Vetor[%d]: ", i);  // Mostra o índice da posição que está sendo preenchida
+        scanf("%d", &vetor[i]);    // Armazena o valor digitado no vetor
+    }
+
+    // ---------------------- VERIFICAÇÃO DE REPETIÇÕES ----------------------
+    printf("\nValores repetidos encontrados:\n");
+
+    for (int i = 0; i < 10; i++)  // Laço externo percorre o vetor inteiro
+    {
+        for (int j = i + 1; j < 10; j++)  // Laço interno compara o elemento atual com os próximos
+                                          // Assim, você evita: Comparar um valor com ele mesmo
+        {
+            if (vetor[i] == vetor[j])  // Se encontrar valores iguais...
+            {
+                printf("%d ", vetor[i]);  // Mostra o valor repetido
+                repetido = 1;             // Indica que existe pelo menos um número repetido
+                break;  // Sai do laço interno para não repetir a mesma impressão
+            }
+        }
+    }
+
+    // ---------------------- RESULTADO FINAL ----------------------
+    if (!repetido)  // Se nenhum número repetido foi encontrado
+    {
+        printf("Nao existem valores repetidos.\n");
+    }
+
+    system("pause");  // Pausa o programa (útil no Windows)
+    return 0;         // Indica que o programa terminou corretamente
+}
