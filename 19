@@ -1,0 +1,34 @@
+/*
+19. Faça um vetor de tamanho 50 preenchido com o seguinte valor:
+    (i + 5 * i) % (i + 1), sendo i a posição do elemento no vetor.
+    Em seguida, imprima o vetor na tela.
+*/
+
+#include <stdio.h>   // Biblioteca padrão de entrada e saída (printf, scanf)
+#include <stdlib.h>  // Biblioteca padrão (para system("pause"))
+
+int main()  // Início da função principal
+{
+    int vetor[50];  // Cria um vetor com 50 posições inteiras
+
+    // ---------------------- PROCESSAMENTO ----------------------
+    for (int i = 0; i < 50; i++)  // Percorre todas as 50 posições do vetor
+    {
+        // Calcula o valor conforme a fórmula: (i + 5 * i) % (i + 1)
+        // - (i + 5 * i) é o mesmo que 6 * i
+        // - % (i + 1) calcula o resto da divisão de (6 * i) por (i + 1)
+        vetor[i] = (i + 5 * i) % (i + 1);
+    }
+
+    // ---------------------- SAÍDA DE DADOS ----------------------
+    printf("Valores do vetor:\n");  // Mensagem de saída
+
+    for (int i = 0; i < 50; i++)  // Percorre novamente o vetor
+    {
+        printf("Vetor[%d] = %d\n", i, vetor[i]);  // Mostra cada elemento com seu índice
+    }
+
+    system("pause");  // Pausa o programa (útil no Windows)
+    return 0;         // Indica que o programa terminou corretamente
+}
+
