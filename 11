@@ -1,0 +1,42 @@
+/*
+11. Faça um programa que preencha um vetor com 10 números reais,
+    calcule e mostre a quantidade de números negativos
+    e a soma dos números positivos desse vetor.
+*/
+
+#include <stdio.h>   // Inclui a biblioteca padrão de entrada e saída (printf, scanf)
+#include <stdlib.h>  // Inclui a biblioteca padrão (usada aqui para system("pause"))
+
+int main()  // Início da função principal do programa
+{
+    float numeros[10];      // Cria um vetor de 10 posições para armazenar números reais (float)
+    int qtdNegativos = 0;   // Cria um contador para a quantidade de números negativos
+    float somaPositivos = 0; // Cria uma variável acumuladora para a soma dos números positivos
+
+    // ---------------------- ENTRADA DE DADOS ----------------------
+    printf("Digite 10 numeros reais (positivos ou negativos):\n"); // Mensagem pedindo os 10 números
+
+    for (int i = 0; i < 10; i++)   // Laço de repetição que vai de 0 até 9 (10 números)
+    {
+        printf("Numero %d: ", i + 1); // Mostra qual número o usuário deve digitar
+        scanf("%f", &numeros[i]);     // Lê um número real digitado pelo usuário e armazena na posição i do vetor
+
+        // ---------------------- PROCESSAMENTO ----------------------
+        if (numeros[i] < 0)     // Se o número for menor que zero, ou seja, negativo...
+        {
+            qtdNegativos++;     // Aumenta o contador de números negativos em 1
+        }
+        else                    // Caso contrário (número positivo ou zero)...
+        {
+            somaPositivos += numeros[i];  // Soma o número à variável somaPositivos
+        }
+    }
+
+    // ---------------------- SAÍDA DE DADOS ----------------------
+    printf("\nQuantidade de numeros negativos: %d\n", qtdNegativos);  // Mostra quantos números negativos foram digitados
+    printf("Soma dos numeros positivos: %.2f\n", somaPositivos);      // Mostra a soma total dos números positivos (com 2 casas decimais)
+
+    system("pause");  // Pausa a execução do programa antes de encerrar (útil no Windows)
+    return 0;         // Indica que o programa terminou corretamente
+}
+
