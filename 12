@@ -1,0 +1,59 @@
+/*
+12. Fazer um programa para ler 5 valores e, em seguida, mostrar
+    todos os valores lidos juntamente com o maior, o menor
+    e a média dos valores.
+*/
+
+#include <stdio.h>   // Biblioteca padrão para entrada e saída (printf, scanf)
+#include <stdlib.h>  // Biblioteca padrão (para system("pause"))
+
+int main()  // Função principal do programa
+{
+    float valores[5];   // Vetor para armazenar os 5 valores reais
+    float soma = 0;     // Variável para acumular a soma dos valores
+    float media;        // Variável para armazenar a média
+    float maior, menor; // Variáveis para armazenar o maior e o menor valor
+
+    // ---------------------- ENTRADA DE DADOS ----------------------
+    printf("Digite 5 valores reais:\n");  // Mensagem inicial
+
+    for (int i = 0; i < 5; i++)  // Laço que repete 5 vezes para ler os valores
+    {
+        printf("Valor %d: ", i + 1);  // Mostra o número da entrada (1 a 5)
+        scanf("%f", &valores[i]);     // Lê o valor e armazena no vetor
+
+        soma += valores[i];           // Soma o valor lido à variável soma
+
+        if (i == 0)  // Na primeira leitura, inicializa maior e menor com o primeiro valor
+        {
+            maior = valores[i];
+            menor = valores[i];
+        }
+        else  // Nas próximas leituras, compara para achar o maior e o menor
+        {
+            if (valores[i] > maior)  // Se o valor for maior que o atual "maior", atualiza
+                maior = valores[i];
+
+            if (valores[i] < menor)  // Se o valor for menor que o atual "menor", atualiza
+                menor = valores[i];
+        }
+    }
+
+    // ---------------------- PROCESSAMENTO ----------------------
+    media = soma / 5;  // Calcula a média aritmética dos 5 valores
+
+    // ---------------------- SAÍDA DE DADOS ----------------------
+    printf("\nValores digitados:\n");
+    for (int i = 0; i < 5; i++)  // Exibe todos os valores armazenados
+    {
+        printf("Valor %d = %.2f\n", i + 1, valores[i]);  // Mostra cada valor com duas casas decimais
+    }
+
+    printf("\nMaior valor: %.2f\n", maior);  // Exibe o maior valor encontrado
+    printf("Menor valor: %.2f\n", menor);    // Exibe o menor valor encontrado
+    printf("Media dos valores: %.2f\n", media);  // Exibe a média final
+
+    system("pause");  // Pausa o programa antes de encerrar (útil no Windows)
+    return 0;         // Indica que o programa terminou com sucesso
+}
+
