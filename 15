@@ -1,0 +1,59 @@
+/* 15 - Leia um vetor com 20 números inteiros. Escreva os elementos do vetor
+        eliminando elementos repetidos. */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int vetor[20];        // Vetor original
+    int semRepetidos[20]; // Vetor que vai guardar apenas valores únicos
+    int qtdUnicos = 0;    // Quantos valores únicos já foram armazenados
+                          // (começa com zero pois não encontrou nenhum ainda)
+
+    // ---------------------- ENTRADA ----------------------
+    printf("Digite 20 numeros inteiros:\n");
+
+    for (int i = 0; i < 20; i++)
+    {
+        printf("Vetor[%d]: ", i);
+        scanf("%d", &vetor[i]);
+    }
+
+    // ---------------------- REMOVER REPETIDOS ----------------------
+    for (int i = 0; i < 20; i++) // vai analisar cada elemento do vetor original
+    {
+        int jaExiste = 0;  // Começa em 0 → significa “ainda não achei esse número entre os semRepetidos”.
+
+        // Verifica se vetor[i] já está no semRepetidos[]
+        for (int j = 0; j < qtdUnicos; j++)  // o vetor semRepetidos só pode ser valores
+                                             // únicos, vai do [0,qtdUnicos[
+                                                    {
+            if (vetor[i] == semRepetidos[j]) // se o vetor externo = vetor interno
+            {
+                jaExiste = 1;  // Encontrou repetido → não adiciona
+                break; // sai do laço for
+            }
+        }
+
+        // Se NÃO existe ainda → adiciona ao vetor de únicos
+        if (!jaExiste)
+        {
+            semRepetidos[qtdUnicos] = vetor[i]; // o número (vetor[i]) do vetor externo é
+                                                // é adicionado no vetor interno semRepetidos
+                                                // "ele é colocado na próxima posição livre do vetor".
+
+            qtdUnicos++; // ele apenas marca quantos únicos já foram inseridos.
+        }
+    }
+
+    // ---------------------- SAÍDA ----------------------
+    printf("\nVetor sem repetidos:\n");
+    for (int i = 0; i < qtdUnicos; i++)
+    {
+        printf("%d \n", semRepetidos[i]);
+    }
+
+    system("pause");
+    return 0;
+}
