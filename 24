@@ -1,0 +1,66 @@
+/*
+24. Faça um programa que leia dez conjuntos de dois valores:
+    - o primeiro representa o número do aluno;
+    - o segundo representa a altura do aluno em metros.
+
+    O programa deve encontrar:
+    - o aluno mais baixo e o mais alto;
+    - mostrar o número e a altura desses alunos.
+*/
+
+#include <stdio.h>   // Biblioteca padrão de entrada e saída (printf, scanf)
+#include <stdlib.h>  // Biblioteca padrão (para system("pause"))
+
+int main()  // Função principal do programa
+{
+    int numero[10];      // Vetor para armazenar o número dos alunos (10 alunos)
+    float altura[10];    // Vetor para armazenar as alturas correspondentes
+
+    int indiceMaisBaixo = 0;  // Guarda o índice do aluno mais baixo
+    int indiceMaisAlto = 0;   // Guarda o índice do aluno mais alto
+
+    // ---------------------- ENTRADA DE DADOS ----------------------
+    printf("Digite o numero e a altura (em metros) de 10 alunos:\n");
+
+    for (int i = 0; i < 10; i++)  // Laço para ler os dados dos 10 alunos
+    {
+        printf("Aluno %d:\n", i + 1);     // Mostra o número do aluno a ser cadastrado
+        printf("Numero do aluno: ");
+        scanf("%d", &numero[i]);          // Lê o número de identificação do aluno
+
+        printf("Altura do aluno (em metros): ");
+        scanf("%f\n", &altura[i]);          // Lê a altura do aluno
+    }
+
+    // ---------------------- PROCESSAMENTO ----------------------
+    // Inicialmente, assumimos que o primeiro aluno é o mais baixo e o mais alto
+    indiceMaisBaixo = 0;
+    indiceMaisAlto = 0;
+
+    for (int i = 1; i < 10; i++)  // Começa do segundo aluno (índice 1)
+    {
+        if (altura[i] < altura[indiceMaisBaixo])  // Verifica se o aluno atual é mais baixo
+        {
+            indiceMaisBaixo = i;  // Atualiza o índice do mais baixo
+        }
+
+        if (altura[i] > altura[indiceMaisAlto])  // Verifica se o aluno atual é mais alto
+        {
+            indiceMaisAlto = i;  // Atualiza o índice do mais alto
+        }
+    }
+
+    // ---------------------- SAÍDA DE DADOS ----------------------
+    printf("\n===== RESULTADO FINAL =====\n");
+
+    printf("Aluno mais baixo:\n");
+    printf("Numero: %d\n", numero[indiceMaisBaixo]);   // Mostra o número do aluno mais baixo
+    printf("Altura: %.2f metros\n", altura[indiceMaisBaixo]);  // Mostra a altura do aluno mais baixo
+
+    printf("\nAluno mais alto:\n");
+    printf("Numero: %d\n", numero[indiceMaisAlto]);    // Mostra o número do aluno mais alto
+    printf("Altura: %.2f metros\n", altura[indiceMaisAlto]);   // Mostra a altura do aluno mais alto
+
+    system("pause");  // Pausa a execução (útil no Windows)
+    return 0;         // Indica que o programa terminou com sucesso
+}
