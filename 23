@@ -1,0 +1,61 @@
+/*
+23. Ler dois conjuntos de números reais, armazenando-os em vetores
+    e calcular o produto escalar entre eles.
+    Os conjuntos têm 5 elementos cada.
+    Imprimir os dois conjuntos e o produto escalar,
+    sendo que o produto escalar é dado por:
+
+    x1*y1 + x2*y2 + ... + xn*yn
+*/
+
+#include <stdio.h>   // Biblioteca padrão de entrada e saída (printf, scanf)
+#include <stdlib.h>  // Biblioteca padrão (para system("pause"))
+
+int main()  // Função principal onde o programa inicia
+{
+    float X[5];  // Vetor X com 5 elementos reais
+    float Y[5];  // Vetor Y com 5 elementos reais
+    float produto_escalar = 0;  // Variável para armazenar o resultado final do produto escalar
+
+    // ---------------------- ENTRADA DE DADOS ----------------------
+    printf("Digite 5 numeros reais para o vetor X:\n");
+
+    for (int i = 0; i < 5; i++)  // Laço que percorre as 5 posições do vetor X
+    {
+        printf("X[%d]: ", i);   // Mostra o índice atual
+        scanf("%f", &X[i]);     // Lê um número real e armazena na posição i de X
+    }
+
+    printf("\nDigite 5 numeros reais para o vetor Y:\n");
+
+    for (int i = 0; i < 5; i++)  // Laço que percorre as 5 posições do vetor Y
+    {
+        printf("Y[%d]: ", i);   // Mostra o índice atual
+        scanf("%f", &Y[i]);     // Lê um número real e armazena na posição i de Y
+    }
+
+    // ---------------------- PROCESSAMENTO ----------------------
+    // Calcula o produto escalar: soma dos produtos X[i] * Y[i]
+    for (int i = 0; i < 5; i++)
+    {
+        produto_escalar += X[i] * Y[i];  // Acumula a soma dos produtos correspondentes
+    }
+
+    // ---------------------- SAÍDA DE DADOS ----------------------
+    printf("\nVetor X: ");  // Exibe o vetor X
+    for (int i = 0; i < 5; i++)
+    {
+        printf("%.2f ", X[i]);  // Mostra cada elemento com duas casas decimais
+    }
+
+    printf("\nVetor Y: ");  // Exibe o vetor Y
+    for (int i = 0; i < 5; i++)
+    {
+        printf("%.2f ", Y[i]);
+    }
+
+    printf("\n\nProduto escalar = %.2f\n", produto_escalar);  // Mostra o resultado final
+
+    system("pause");  // Pausa a execução (útil no Windows)
+    return 0;         // Finaliza o programa corretamente
+}
