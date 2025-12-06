@@ -1,0 +1,53 @@
+/*
+27. Leia 10 números inteiros e armazene em um vetor.
+Em seguida, escreva os elementos que são primos e suas respectivas posições no vetor.
+*/
+
+#include <stdio.h>  // Biblioteca padrão de entrada e saída (para printf, scanf)
+#include <stdlib.h>
+
+// Função que verifica se um número é primo
+int ehPrimo(int num)
+{
+    if (num <= 1)        // Números menores ou iguais a 1 não são primos
+        return 0;        // Retorna 0 (falso)
+
+    for (int i = 2; i * i <= num; i++) // Testa divisores de 2 até a raiz quadrada de num
+    {
+        if (num % i == 0)                // Se o número for divisível por i
+            return 0;                    // Não é primo → retorna 0
+    }
+
+    return 1;  // Se não encontrou divisores, é primo → retorna 1 (verdadeiro)
+}
+
+int main()
+{
+    int v[10];   // Declara um vetor para armazenar 10 números inteiros
+
+    // ---------------------------------------------------------------
+    // Entrada de dados
+    // ---------------------------------------------------------------
+    printf("Digite 10 numeros inteiros:\n");  // Solicita os 10 números ao usuário
+
+    for (int i = 0; i < 10; i++)  // Laço de repetição para ler os 10 valores
+    {
+        scanf("%d", &v[i]);                   // Lê um número inteiro e armazena na posição v[i]
+    }
+
+    // ---------------------------------------------------------------
+    // Processamento: Verificação dos números primos
+    // ---------------------------------------------------------------
+    printf("\nNumeros primos e suas posicoes no vetor:\n");  // Cabeçalho da saída
+
+    for (int i = 0; i < 10; i++) // Percorre o vetor novamente
+    {
+        if (ehPrimo(v[i]))// Chama a função ehPrimo para verificar se v[i] é primo
+        {
+            printf("v[%d] = %d eh primo\n", i, v[i]);  // Exibe o número e sua posição
+        }
+    }
+
+    system("pause");
+    return 0;  // Finaliza o programa com sucesso
+}
