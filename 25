@@ -1,0 +1,48 @@
+/*
+25. Faça um programa que preencha um vetor de tamanho 100
+    com os 100 primeiros números naturais que:
+    - não são múltiplos de 7
+    - e não terminam com 7.
+*/
+
+#include <stdio.h>   // Biblioteca padrão de entrada e saída (printf)
+#include <stdlib.h>  // Biblioteca padrão (para system("pause"))
+
+int main()  // Função principal
+{
+    int vetor[100];   // Vetor que armazenará os 100 números desejados
+    int numero = 1;   // Variável que irá gerar os números naturais (começa em 1) // candidato a entrar no vetor ("vamos testar este número, serve ou não serve?")
+    int contador = 0; // Conta quantos números válidos já foram colocados no vetor
+
+    // ---------------------- PROCESSAMENTO ----------------------
+    // Enquanto o vetor ainda não tiver 100 números válidos:
+    while (contador < 100)
+    {
+        // Verifica as duas condições:
+        // 1. O número NÃO pode ser múltiplo de 7 → (numero % 7 != 0)
+        // 2. O número NÃO pode terminar com 7 → (numero % 10 != 7)
+        if (numero % 7 != 0 && numero % 10 != 7)
+        {
+            vetor[contador] = numero; // Armazena o número válido no vetor
+            contador++;               // Aumenta o contador (próxima posição do vetor)
+        }
+
+        numero++; // Incrementa o número para testar o próximo
+    }
+
+    // ---------------------- SAÍDA DE DADOS ----------------------
+    printf("Os 100 primeiros numeros naturais que nao sao multiplos de 7 nem terminam com 7:\n\n");
+
+    for (int i = 0; i < 100; i++)  // Percorre o vetor de 0 até 99
+    {
+        printf("%d ", vetor[i]);   // Mostra o número armazenado
+        if ((i + 1) % 10 == 0)     // A cada 10 números, pula uma linha para ficar mais legível
+        {
+            printf("\n");
+        }
+    }
+
+    printf("\n");
+    system("pause");  // Pausa o programa (útil no Windows)
+    return 0;         // Indica que o programa terminou com sucesso
+}
