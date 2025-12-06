@@ -1,0 +1,61 @@
+/*
+26. Faça um programa que calcule o desvio padrão de um vetor v contendo n = 10 números,
+onde m é a média do vetor.
+
+A fórmula do desvio padrão é:
+
+               ________________________________
+Desvio = √ ( 1 / (n - 1) * Σ (v[i] - m)² )
+                        i = 1 até n
+*/
+
+#include <stdio.h>   // Inclui a biblioteca padrão de entrada e saída (printf, scanf)
+#include <stdlib.h>
+#include <math.h>    // Inclui a biblioteca matemática (para usar sqrt e pow)
+
+int main()           // Função principal do programa (ponto de início da execução)
+{
+    float v[10];     // Declara um vetor de 10 posições para armazenar números reais
+    float soma = 0;  // Variável para acumular a soma dos valores do vetor
+    float media;     // Variável para armazenar o valor da média
+    float somaQuadrados = 0;  // Variável para acumular a soma dos quadrados das diferenças
+    float desvioPadrao;       // Variável para armazenar o resultado final do desvio padrão
+
+    // ---------------------------------------------------------------
+    // Entrada de dados
+    // ---------------------------------------------------------------
+    printf("Digite 10 numeros reais:\n");  // Solicita ao usuário que insira 10 números
+
+    for(int i = 0; i < 10; i++)                 // Laço que vai de i = 0 até i = 9 (10 repetições)
+    {
+        scanf("%f", &v[i]);                 // Lê um número real e armazena em v[i]
+        soma += v[i];                       // Adiciona o valor lido à variável soma
+    }
+
+    // ---------------------------------------------------------------
+    // Cálculo da média
+    // ---------------------------------------------------------------
+    media = soma / 10.0;                    // Calcula a média dividindo a soma pelo total de elementos
+    printf("\nA media do vetor eh: %.2f\n", media); // Exibe a média com 2 casas decimais
+
+    // ---------------------------------------------------------------
+    // Cálculo da soma dos quadrados das diferenças (v[i] - media)²
+    // ---------------------------------------------------------------
+    for(int i = 0; i < 10; i++)                 // Percorre novamente todo o vetor
+    {
+        somaQuadrados += pow(v[i] - media, 2);  // pow(x,2) calcula (x²); somaQuadrados acumula (v[i]-media)²
+    }
+
+    // ---------------------------------------------------------------
+    // Cálculo do desvio padrão
+    // ---------------------------------------------------------------
+    desvioPadrao = sqrt(somaQuadrados / (10 - 1)); // sqrt(x) calcula a raiz quadrada; divide por (n-1) = 9
+
+    // ---------------------------------------------------------------
+    // Saída de dados
+    // ---------------------------------------------------------------
+    printf("O desvio padrao do vetor eh: %.4f\n", desvioPadrao); // Exibe o resultado com 4 casas decimais
+
+    system("pause");
+    return 0; // Indica que o programa terminou corretamente
+}
