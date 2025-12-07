@@ -12,10 +12,10 @@ Não deve conter números repetidos.
 
 int main()
 {
-    int x[10];       // Declara o vetor X com 5 posições inteiras
-    int y[10];       // Declara o vetor Y com 5 posições inteiras
-    int k;           // contador de elementos que pertencem a inter []
-    int uniao[20];   // Vetor para armazenar a união de X e Y (no máximo 10 elementos)
+    int x[10];       // Declara o vetor X com 10 posições inteiras
+    int y[10];       // Declara o vetor Y com 10 posições inteiras
+    int k = 0;       // Contador de qtos elemento estão no vetor uniao []
+    int uniao[20];   // Vetor para armazenar a união de X e Y (no máximo 20 elementos)
 
     // ---------------------------------------------------------------
     // Entrada do vetor X
@@ -43,21 +43,19 @@ int main()
     // ---------------------------------------------------------------
     printf("\n\nUniao entre X e Y:\n");     // Escreve o título da seção de união
 
-    k = 0;                                  // Reinicia k para usar como índice de preenchimento no vetor uniao[]
-
     // Primeiro, copia todos os elementos de X para o vetor uniao[]
-    for(int i = 0; i < 10; i++)              // Percorre as 5 posições de X
+    for(int i = 0; i < 10; i++)              // Percorre as 10 posições de X
     {
         uniao[k] = x[i];                    // Copia o elemento x[i] para uniao[k]
         k++;                                // Avança k para a próxima posição de uniao[]
     }
 
     // Depois, adiciona os elementos de Y que não estão em X
-    for(int i = 0; i < 10; i++)              // Percorre as 5 posições de Y
+    for(int i = 0; i < 10; i++)              // Percorre as 10 posições de Y
     {
         int repetido = 0;                   // Flag que indica se y[i] já existe em X; assume inicialmente que NÃO é repetido
 
-        for(int j = 0; j < 10; j++)          // Percorre as 5 posições de X para comparar com y[i]
+        for(int j = 0; j < 10; j++)          // Percorre as 10 posições de X para comparar com y[i]
         {
             if(y[i] == x[j])                // Se o elemento de Y for igual a algum elemento de X
             {
@@ -78,8 +76,7 @@ int main()
         printf("%d ", uniao[i]);            // Exibe cada elemento da união (todos de X + os de Y que não estavam em X)
     }
 
-
-
     system("pause");
     return 0;
 }
+
