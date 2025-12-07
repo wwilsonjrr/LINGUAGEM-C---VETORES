@@ -1,0 +1,91 @@
+/*
+30. Faça um programa que leia dois vetores de 10 elementos.
+Crie um vetor que seja a interseção entre os 2 vetores anteriores,
+ou seja, que contém apenas os números que estão em ambos os vetores.
+Não deve conter números repetidos.
+*/
+
+#include <stdio.h>  // Biblioteca padrão para entrada e saída (printf, scanf)
+#include <stdlib.h>
+
+int main()
+{
+
+    int v1[10];       // Primeiro vetor com 10 elementos
+    int v2[10];       // Segundo vetor com 10 elementos
+    int inter[10];    // Vetor que armazenará a interseção dos dois vetores
+    int k = 0;        // Contador de quantos elementos já foram inseridos no vetor inter[]
+    int repetido;     // Variável auxiliar para verificar duplicados
+
+    // ---------------------------------------------------------------
+    // Leitura do primeiro vetor
+    // ---------------------------------------------------------------
+    printf("Digite os 10 elementos do primeiro vetor (v1):\n");
+
+    for(int i = 0; i < 10; i++) // Loop de 0 a 9
+    {
+        scanf("%d", &v1[i]);   // Lê e armazena cada elemento no vetor v1
+    }
+
+    // ---------------------------------------------------------------
+    // Leitura do segundo vetor
+    // ---------------------------------------------------------------
+    printf("\nDigite os 10 elementos do segundo vetor (v2):\n");
+
+    for(int i = 0; i < 10; i++) // Loop de 0 a 9
+    {
+        scanf("%d", &v2[i]);   // Lê e armazena cada elemento no vetor v2
+    }
+
+    // ---------------------------------------------------------------
+    // Cálculo da interseção entre v1 e v2
+    // ---------------------------------------------------------------
+    for(int i = 0; i < 10; i++) // Percorre todos os elementos de v1
+    {
+        for(int j = 0; j < 10; j++) // Compara com todos os elementos de v2
+        {
+            if(v1[i] == v2[j]) // Se um número existir nos dois vetores
+            {
+                repetido = 0;          // Ainda não inseri esse número na interseção
+
+                // verifica se esse número já foi colocado em inter[]
+                for(int m = 0; m < k; m++)
+                {
+                    if(inter[m] == v1[i])
+                    {
+                        repetido = 1;  // Esse número já está na interseção, então NÃO posso colocar de novo
+                        break;         // Sai do laço para evitar redundância
+                    }
+                }
+
+                // Se não estiver repetido, adiciona o número à interseção
+                if(repetido == 0)
+                {
+                    inter[k] = v1[i];  // Armazena o valor em inter[k]
+                    k++;               // Incrementa o índice de inserção
+                }
+            }
+        }
+    }
+
+    // ---------------------------------------------------------------
+    // Exibição do vetor de interseção (sem números repetidos)
+    // ---------------------------------------------------------------
+    printf("\nElementos da interseccao entre v1 e v2:\n");
+
+    if(k == 0) // Se k = 0, significa que não há elementos comuns
+    {
+        printf("Nao ha elementos em comum.\n");
+    }
+    else
+    {
+        for(int i = 0; i < k; i++) // Percorre os elementos válidos da interseção
+        {
+            printf("%d ", inter[i]);  // Exibe cada elemento da interseção
+        }
+        printf("\n");                 // Quebra de linha para melhor visualização
+    }
+
+    system("pause");
+    return 0; // Encerra o programa corretamente
+}
