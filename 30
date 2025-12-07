@@ -5,87 +5,64 @@ ou seja, que contém apenas os números que estão em ambos os vetores.
 Não deve conter números repetidos.
 */
 
-#include <stdio.h>  // Biblioteca padrão para entrada e saída (printf, scanf)
+
+
+#include <stdio.h>
 #include <stdlib.h>
 
 int main()
 {
+    int x[10];                   // Declara o vetor X com 5 posições inteiras
+    int y[10];                   // Declara o vetor Y com 5 posições inteiras
+    int k;                       // contador de elementos que pertencem a inter []
+    int inter[10];               // Vetor para armazenar os elementos comuns entre X e Y (interseção)
 
-    int v1[10];       // Primeiro vetor com 10 elementos
-    int v2[10];       // Segundo vetor com 10 elementos
-    int inter[10];    // Vetor que armazenará a interseção dos dois vetores
-    int k = 0;        // Contador de quantos elementos já foram inseridos no vetor inter[]
-    int repetido;     // Variável auxiliar para verificar duplicados
 
     // ---------------------------------------------------------------
-    // Leitura do primeiro vetor
+    // Entrada do vetor X
     // ---------------------------------------------------------------
-    printf("Digite os 10 elementos do primeiro vetor (v1):\n");
+    printf("Digite 10 elementos para o vetor X:\n");   // Exibe mensagem pedindo os 5 valores de X
 
-    for(int i = 0; i < 10; i++) // Loop de 0 a 9
+    for(int i = 0; i < 10; i++)   // Laço para percorrer as posições 0,1,2,3,4 do vetor X
     {
-        scanf("%d", &v1[i]);   // Lê e armazena cada elemento no vetor v1
+        scanf("%d", &x[i]);      // Lê um número inteiro digitado pelo usuário e armazena em x[i]
     }
 
     // ---------------------------------------------------------------
-    // Leitura do segundo vetor
+    // Entrada do vetor Y
     // ---------------------------------------------------------------
-    printf("\nDigite os 10 elementos do segundo vetor (v2):\n");
+    printf("\nDigite 10 elementos para o vetor Y:\n"); // Exibe mensagem pedindo os 5 valores de Y
 
-    for(int i = 0; i < 10; i++) // Loop de 0 a 9
+    for(int i = 0; i < 10; i++)   // Laço para percorrer as posições 0,1,2,3,4 do vetor Y
     {
-        scanf("%d", &v2[i]);   // Lê e armazena cada elemento no vetor v2
+        scanf("%d", &y[i]);      // Lê um número inteiro digitado pelo usuário e armazena em y[i]
     }
 
     // ---------------------------------------------------------------
-    // Cálculo da interseção entre v1 e v2
+    // Interseção entre X e Y
     // ---------------------------------------------------------------
-    for(int i = 0; i < 10; i++) // Percorre todos os elementos de v1
+    printf("\n\nIntersecao entre X e Y:\n"); // Escreve o título da seção de interseção
+
+    k = 0;                                   // Reinicia k para armazenar desde o início no vetor inter[]
+
+    for(int i = 0; i < 10; i++)              // Percorre cada elemento de X
     {
-        for(int j = 0; j < 10; j++) // Compara com todos os elementos de v2
+        for(int j = 0; j < 10; j++)          // Para cada elemento de X, percorre todos os elementos de Y
         {
-            if(v1[i] == v2[j]) // Se um número existir nos dois vetores
+            if(x[i] == y[j])                // Se o valor de X for igual ao de Y
             {
-                repetido = 0;          // Ainda não inseri esse número na interseção
-
-                // verifica se esse número já foi colocado em inter[]
-                for(int m = 0; m < k; m++)
-                {
-                    if(inter[m] == v1[i])
-                    {
-                        repetido = 1;  // Esse número já está na interseção, então NÃO posso colocar de novo
-                        break;         // Sai do laço para evitar redundância
-                    }
-                }
-
-                // Se não estiver repetido, adiciona o número à interseção
-                if(repetido == 0)
-                {
-                    inter[k] = v1[i];  // Armazena o valor em inter[k]
-                    k++;               // Incrementa o índice de inserção
-                }
+                inter[k] = x[i];            // Armazena esse valor em inter[k], pois ele está nos dois vetores
+                k++;                        // Incrementa k para a próxima posição disponível em inter[]
+                break;                      // Sai do laço interno para não contar o mesmo valor mais de uma vez
             }
         }
     }
 
-    // ---------------------------------------------------------------
-    // Exibição do vetor de interseção (sem números repetidos)
-    // ---------------------------------------------------------------
-    printf("\nElementos da interseccao entre v1 e v2:\n");
-
-    if(k == 0) // Se k = 0, significa que não há elementos comuns
+    for(int i = 0; i < k; i++)              // Percorre as posições preenchidas em inter[]
     {
-        printf("Nao ha elementos em comum.\n");
-    }
-    else
-    {
-        for(int i = 0; i < k; i++) // Percorre os elementos válidos da interseção
-        {
-            printf("%d ", inter[i]);  // Exibe cada elemento da interseção
-        }
-        printf("\n");                 // Quebra de linha para melhor visualização
+        printf("%d ", inter[i]);            // Exibe cada elemento que pertence à interseção de X e Y
     }
 
     system("pause");
-    return 0; // Encerra o programa corretamente
+    return 0;
 }
