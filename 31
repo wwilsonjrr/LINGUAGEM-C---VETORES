@@ -1,0 +1,104 @@
+/*
+31. Faça um programa que leia dois vetores de 10 elementos.
+Crie um vetor que seja a união entre os 2 vetores anteriores,
+ou seja, que contém os números dos dois vetores.
+Não deve conter números repetidos.
+*/
+
+#include <stdio.h>  // Biblioteca padrão para entrada e saída (printf, scanf)
+#include <stdlib.h>
+
+int main()
+{
+
+    int v1[10];      // Primeiro vetor com 10 elementos
+    int v2[10];      // Segundo vetor com 10 elementos
+    int uniao[20];   // Vetor que armazenará a união (pode ter até 20 elementos)
+    int k = 0;       // contador de qtos elementos já existem no vetor uniao[]
+    int repetido;    // Variável auxiliar para verificar duplicatas. True or False
+
+    // ---------------------------------------------------------------
+    // Leitura do primeiro vetor
+    // ---------------------------------------------------------------
+    printf("Digite os 10 elementos do primeiro vetor (v1):\n");
+
+    for(int i = 0; i < 10; i++) // Loop de 0 a 9
+    {
+        scanf("%d", &v1[i]);   // Lê e armazena cada número no vetor v1
+    }
+
+    // ---------------------------------------------------------------
+    // Leitura do segundo vetor
+    // ---------------------------------------------------------------
+    printf("\nDigite os 10 elementos do segundo vetor (v2):\n");
+
+    for(int i = 0; i < 10; i++) // Loop de 0 a 9
+    {
+        scanf("%d", &v2[i]);   // Lê e armazena cada número no vetor v2
+    }
+
+    // ---------------------------------------------------------------
+    // Inserção dos elementos de v1 na união
+    // ---------------------------------------------------------------
+    for(int i = 0; i < 10; i++) // Percorre todos os elementos de v1
+    {
+        repetido = 0;               // Assume inicialmente que o número não é repetido
+
+        // Verifica se o número de v1 já foi adicionado à união
+        for(int j = 0; j < k; j++)
+        {
+            if(uniao[j] == v1[i]) // Se encontrar o número, marca como repetido
+            {
+                repetido = 1;
+                break;              // Sai do laço interno
+            }
+        }
+
+        // Se não for repetido, adiciona na união
+        if(repetido == 0)
+        {
+            uniao[k] = v1[i];       // Armazena o número na posição k
+            k++;                    // Incrementa o contador de elementos válidos
+        }
+    }
+
+    // ---------------------------------------------------------------
+    // Inserção dos elementos de v2 na união (sem repetir)
+    // ---------------------------------------------------------------
+    for(int i = 0; i < 10; i++) // Percorre todos os elementos de v2
+    {
+        repetido = 0;               // Assume que não há repetição
+
+        // Verifica se o número de v2 já existe em uniao[]
+        for(int j = 0; j < k; j++)
+        {
+            if(uniao[j] == v2[i]) // Se já existe, marca como repetido
+            {
+                repetido = 1;
+                break;
+            }
+        }
+
+        // Se não for repetido, adiciona na união
+        if(repetido == 0)
+        {
+            uniao[k] = v2[i];       // Armazena o número
+            k++;                    // Incrementa o total de elementos em uniao[]
+        }
+    }
+
+    // ---------------------------------------------------------------
+    // Exibição do vetor união (sem números repetidos)
+    // ---------------------------------------------------------------
+    printf("\nElementos da uniao entre v1 e v2:\n");
+
+    for(int i = 0; i < k; i++) // Percorre apenas os índices utilizados
+    {
+        printf("%d ", uniao[i]);    // Exibe os elementos da união
+    }
+
+    printf("\n");                   // Quebra de linha para melhor visualização
+
+    system("pause");
+    return 0; // Finaliza o programa corretamente
+}
