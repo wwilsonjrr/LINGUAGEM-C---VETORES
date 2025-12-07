@@ -14,7 +14,7 @@ int main()
 {
     int x[10];       // Declara o vetor X com 5 posições inteiras
     int y[10];       // Declara o vetor Y com 5 posições inteiras
-    int k;
+    int k;           // contador de elementos que pertencem a inter []
     int uniao[20];   // Vetor para armazenar a união de X e Y (no máximo 10 elementos)
 
     // ---------------------------------------------------------------
