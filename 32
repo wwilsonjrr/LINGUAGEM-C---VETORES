@@ -1,0 +1,168 @@
+/*
+32. Leia dois vetores de inteiros x e y, cada um com 5 elementos (sem repetição de valores).
+Calcule e mostre os vetores resultantes para:
+
+• Soma entre x e y
+• Produto entre x e y
+• Diferença entre x e y
+• Interseção entre x e y
+• União entre x e y
+*/
+
+#include <stdio.h>              // Inclui a biblioteca padrão de entrada e saída (printf, scanf)
+#include <stdlib.h>
+
+int main()                      // Função principal do programa, ponto de entrada
+{
+    int x[5];                   // Declara o vetor X com 5 posições inteiras
+    int y[5];                   // Declara o vetor Y com 5 posições inteiras
+    int soma[5];                // Vetor para armazenar a soma posição a posição entre X e Y
+    int produto[5];             // Vetor para armazenar o produto posição a posição entre X e Y
+    int diferenca[5];           // Vetor para armazenar os elementos de X que não estão em Y
+    int inter[5];               // Vetor para armazenar os elementos comuns entre X e Y (interseção)
+    int uniao[10];              // Vetor para armazenar a união de X e Y (no máximo 10 elementos)
+
+    // ---------------------------------------------------------------
+    // Entrada do vetor X
+    // ---------------------------------------------------------------
+    printf("Digite 5 elementos para o vetor X:\n");   // Exibe mensagem pedindo os 5 valores de X
+
+    for(int i = 0; i < 5; i++)   // Laço para percorrer as posições 0,1,2,3,4 do vetor X
+    {
+        scanf("%d", &x[i]);      // Lê um número inteiro digitado pelo usuário e armazena em x[i]
+    }
+
+    // ---------------------------------------------------------------
+    // Entrada do vetor Y
+    // ---------------------------------------------------------------
+    printf("\nDigite 5 elementos para o vetor Y:\n"); // Exibe mensagem pedindo os 5 valores de Y
+
+    for(int i = 0; i < 5; i++)   // Laço para percorrer as posições 0,1,2,3,4 do vetor Y
+    {
+        scanf("%d", &y[i]);      // Lê um número inteiro digitado pelo usuário e armazena em y[i]
+    }
+
+    // ---------------------------------------------------------------
+    // 1️ - Soma entre X e Y
+    // ---------------------------------------------------------------
+    printf("\nSoma entre X e Y:\n"); // Escreve o título da seção de soma
+
+    for(int i = 0; i < 5; i++)       // Laço que percorre todas as posições (0 a 4)
+    {
+        soma[i] = x[i] + y[i];       // Calcula a soma posição a posição: soma[i] = x[i] + y[i]
+        printf("%d ", soma[i]);      // Exibe o valor calculado da soma naquela posição
+    }
+
+    // ---------------------------------------------------------------
+    // 2️ - Produto entre X e Y
+    // ---------------------------------------------------------------
+    printf("\n\nProduto entre X e Y:\n");  // Escreve o título da seção de produto
+
+    for(int i = 0; i < 5; i++)            // Laço que percorre todas as posições (0 a 4)
+    {
+        produto[i] = x[i] * y[i];         // Calcula o produto posição a posição: produto[i] = x[i] * y[i]
+        printf("%d ", produto[i]);        // Exibe o valor calculado do produto naquela posição
+    }
+
+    // ---------------------------------------------------------------
+    // 3️ - Diferença: elementos de X que não existem em Y
+    // ---------------------------------------------------------------
+    printf("\n\nDiferenca entre X e Y:\n"); // Escreve o título da seção de diferença
+
+    int k = 0;                              // Inicializa k com 0: será o índice para preencher o vetor diferenca[]
+
+    for(int i = 0; i < 5; i++)              // Percorre cada elemento do vetor X
+    {
+        int existe = 0;                     // Flag (0 ou 1) que indica se x[i] existe em Y; começa assumindo que NÃO existe
+
+        for(int j = 0; j < 5; j++)          // Percorre todos os elementos de Y para comparar com x[i]
+        {
+            if(x[i] == y[j])                // Se encontrar um valor em Y igual ao valor atual de X
+            {
+                existe = 1;                 // Marca que esse valor de X existe em Y
+                break;                      // Sai do laço interno pois não precisa procurar mais
+            }
+        }
+
+        if(existe == 0)                     // Se, após o laço, "existe" ainda for 0, então x[i] não foi encontrado em Y
+        {
+            diferenca[k] = x[i];            // Armazena o valor de x[i] na posição k do vetor diferenca[]
+            k++;                            // Incrementa k para apontar para a próxima posição livre em diferenca[]
+        }
+    }
+
+    for(int i = 0; i < k; i++)              // Percorre apenas as posições preenchidas do vetor diferenca[]
+    {
+        printf("%d ", diferenca[i]);        // Exibe cada elemento da diferença (elementos de X que não estão em Y)
+    }
+
+    // ---------------------------------------------------------------
+    // 4️ - Interseção entre X e Y
+    // ---------------------------------------------------------------
+    printf("\n\nIntersecao entre X e Y:\n"); // Escreve o título da seção de interseção
+
+    k = 0;                                   // Reinicia k para armazenar desde o início no vetor inter[]
+
+    for(int i = 0; i < 5; i++)              // Percorre cada elemento de X
+    {
+        for(int j = 0; j < 5; j++)          // Para cada elemento de X, percorre todos os elementos de Y
+        {
+            if(x[i] == y[j])                // Se o valor de X for igual ao de Y
+            {
+                inter[k] = x[i];            // Armazena esse valor em inter[k], pois ele está nos dois vetores
+                k++;                        // Incrementa k para a próxima posição disponível em inter[]
+                break;                      // Sai do laço interno para não contar o mesmo valor mais de uma vez
+            }
+        }
+    }
+
+    for(int i = 0; i < k; i++)              // Percorre as posições preenchidas em inter[]
+    {
+        printf("%d ", inter[i]);            // Exibe cada elemento que pertence à interseção de X e Y
+    }
+
+    // ---------------------------------------------------------------
+    // 5️ - União entre X e Y (sem repetir elementos)
+    // ---------------------------------------------------------------
+    printf("\n\nUniao entre X e Y:\n");     // Escreve o título da seção de união
+
+    k = 0;                                  // Reinicia k para usar como índice de preenchimento no vetor uniao[]
+
+    // Primeiro, copia todos os elementos de X para o vetor uniao[]
+    for(int i = 0; i < 5; i++)              // Percorre as 5 posições de X
+    {
+        uniao[k] = x[i];                    // Copia o elemento x[i] para uniao[k]
+        k++;                                // Avança k para a próxima posição de uniao[]
+    }
+
+    // Depois, adiciona os elementos de Y que não estão em X
+    for(int i = 0; i < 5; i++)              // Percorre as 5 posições de Y
+    {
+        int repetido = 0;                   // Flag que indica se y[i] já existe em X; assume inicialmente que NÃO é repetido
+
+        for(int j = 0; j < 5; j++)          // Percorre as 5 posições de X para comparar com y[i]
+        {
+            if(y[i] == x[j])                // Se o elemento de Y for igual a algum elemento de X
+            {
+                repetido = 1;               // Marca que é repetido (já existe em X)
+                break;                      // Sai do laço interno, pois não precisa procurar mais
+            }
+        }
+
+        if(repetido == 0)                   // Se "repetido" continuar 0, significa que y[i] não está em X
+        {
+            uniao[k] = y[i];                // Inclui y[i] na próxima posição livre de uniao[]
+            k++;                            // Avança k para a próxima posição
+        }
+    }
+
+    for(int i = 0; i < k; i++)              // Percorre todas as posições efetivamente usadas em uniao[]
+    {
+        printf("%d ", uniao[i]);            // Exibe cada elemento da união (todos de X + os de Y que não estavam em X)
+    }
+
+    printf("\n");                           // Imprime uma quebra de linha final para organizar a saída
+
+    system("pause");
+    return 0;                               // Retorna 0 indicando que o programa terminou com sucesso
+}
