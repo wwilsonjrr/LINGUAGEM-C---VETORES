@@ -1,0 +1,66 @@
+/*
+29. Faça um programa que receba 6 números inteiros e mostre:
+
+• Os números pares digitados;
+• A soma dos números pares digitados;
+• Os números ímpares digitados;
+• A quantidade de números ímpares digitados.
+*/
+
+#include <stdio.h>  // Biblioteca padrão para entrada e saída (printf, scanf)
+#include <stdlib.h>
+
+int main()
+{
+
+    int v[6];              // Vetor para armazenar os 6 números inteiros digitados
+    int somaPares = 0;     // Variável para somar os números pares
+    int qtdImpares = 0;    // Variável para contar quantos números ímpares foram digitados
+
+    // ---------------------------------------------------------------
+    // Entrada de dados
+    // ---------------------------------------------------------------
+    printf("Digite 6 numeros inteiros:\n");  // Solicita os números ao usuário
+
+    for(int i = 0; i < 6; i++) // Laço que vai de i = 0 até i = 5 (6 vezes)
+    {
+        scanf("%d", &v[i]);   // Lê um número e armazena em v[i]
+    }
+
+    // ---------------------------------------------------------------
+    // Exibição dos números pares e cálculo da soma
+    // ---------------------------------------------------------------
+    printf("\nNumeros pares digitados:\n");  // Cabeçalho para a listagem dos pares
+
+    for(int i = 0; i < 6; i++) // Percorre o vetor novamente
+    {
+        if(v[i] % 2 == 0) // Verifica se o número é par
+        {
+            printf("%d ", v[i]);             // Mostra o número par
+            somaPares += v[i];               // Acumula o valor na soma dos pares
+        }
+    }
+
+    // Mostra a soma total dos números pares
+    printf("\nSoma dos numeros pares: %d\n", somaPares);
+
+    // ---------------------------------------------------------------
+    // Exibição dos números ímpares e contagem
+    // ---------------------------------------------------------------
+    printf("\nNumeros impares digitados:\n");  // Cabeçalho para a listagem dos ímpares
+
+    for(int i = 0; i < 6; i++) // Percorre o vetor novamente
+    {
+        if(v[i] % 2 != 0) // Verifica se o número é ímpar
+        {
+            printf("%d ", v[i]);               // Mostra o número ímpar
+            qtdImpares++;                      // Incrementa o contador de ímpares
+        }
+    }
+
+    // Mostra a quantidade total de números ímpares
+    printf("\nQuantidade de numeros impares: %d\n", qtdImpares);
+
+    system("pause");
+    return 0;  // Finaliza o programa corretamente
+}
