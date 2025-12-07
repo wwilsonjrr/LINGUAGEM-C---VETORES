@@ -12,9 +12,9 @@ Não deve conter números repetidos.
 
 int main()
 {
-    int x[10];                   // Declara o vetor X com 5 posições inteiras
-    int y[10];                   // Declara o vetor Y com 5 posições inteiras
-    int k;                       // contador de elementos que pertencem a inter []
+    int x[10];                   // Declara o vetor X com 10 posições inteiras
+    int y[10];                   // Declara o vetor Y com 10 posições inteiras
+    int k = 0;                   // Contador de elementos que pertencem a inter []
     int inter[10];               // Vetor para armazenar os elementos comuns entre X e Y (interseção)
 
 
@@ -42,8 +42,6 @@ int main()
     // Interseção entre X e Y
     // ---------------------------------------------------------------
     printf("\n\nIntersecao entre X e Y:\n"); // Escreve o título da seção de interseção
-
-    k = 0;                                   // Reinicia k para armazenar desde o início no vetor inter[]
 
     for(int i = 0; i < 10; i++)              // Percorre cada elemento de X
     {
