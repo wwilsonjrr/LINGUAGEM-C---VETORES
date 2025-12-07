@@ -1,0 +1,67 @@
+/*
+28. Leia 10 números inteiros e armazene em um vetor v.
+Crie dois novos vetores v1 e v2.
+Copie os valores ímpares de v para v1, e os valores pares de v para v2.
+Note que cada um dos vetores v1 e v2 têm no máximo 10 elementos,
+mas nem todos os elementos são utilizados.
+No final, escreva apenas os elementos UTILIZADOS de v1 e v2.
+*/
+
+#include <stdio.h>   // Biblioteca padrão de entrada e saída (printf, scanf)
+#include <stdlib.h>
+
+int main()
+{
+
+    int v[10];   // Vetor principal que armazenará os 10 números digitados
+    int v1[10];  // Vetor que armazenará apenas os números ímpares
+    int v2[10];  // Vetor que armazenará apenas os números pares
+    int cont1 = 0; // Contador para controlar quantos elementos foram inseridos em v1
+    int cont2 = 0; // Contador para controlar quantos elementos foram inseridos em v2
+
+    // ---------------------------------------------------------------
+    // Entrada dos 10 números
+    // ---------------------------------------------------------------
+    printf("Digite 10 numeros inteiros:\n");  // Mensagem de instrução ao usuário
+
+    for(int i = 0; i < 10; i++)// Laço de repetição para ler 10 valores
+    {
+        scanf("%d", &v[i]);            // Lê o número e armazena em v[i]
+
+        if(v[i] % 2 == 0)// Testa se o número é par
+        {
+            v2[cont2] = v[i];          // Armazena o número par em v2
+            cont2++;                   // Incrementa o contador de pares
+        }
+        else// Caso contrário, o número é ímpar
+        {
+            v1[cont1] = v[i];          // Armazena o número ímpar em v1
+            cont1++;                   // Incrementa o contador de ímpares
+        }
+    }
+
+    // ---------------------------------------------------------------
+    // Saída: exibição dos números ímpares armazenados em v1
+    // ---------------------------------------------------------------
+    printf("\nElementos UTILIZADOS de v1 (numeros impares):\n");
+
+    for(int i = 0; i < cont1; i++) // Percorre apenas os índices utilizados
+    {
+        printf("%d ", v1[i]);          // Exibe cada número ímpar armazenado
+    }
+
+    // ---------------------------------------------------------------
+    // Saída: exibição dos números pares armazenados em v2
+    // ---------------------------------------------------------------
+    printf("\n\nElementos UTILIZADOS de v2 (numeros pares):\n");
+
+    for(int i = 0; i < cont2; i++) // Percorre apenas os índices utilizados
+    {
+        printf("%d ", v2[i]);          // Exibe cada número par armazenado
+    }
+
+    printf("\n"); // Quebra de linha para melhor visualização
+
+    system("pause");
+    return 0; // Indica que o programa terminou corretamente
+}
