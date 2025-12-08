@@ -1,0 +1,60 @@
+/*
+36. Leia um vetor com 10 números reais,
+ordene os elementos deste vetor,
+e no final escreva os elementos do vetor ordenado.
+
+Esse tipo de algoritmo:
+
+Bubble Sort
+
+Somente depois de ler todos, ordenar o vetor
+*/
+
+#include <stdio.h>  // Biblioteca padrão para entrada e saída (printf, scanf)
+#include <stdlib.h>
+
+int main()
+{
+
+    float v[10];    // Declara um vetor de 10 números reais
+    float temp;     // Variável auxiliar usada para trocar valores durante a ordenação
+
+    // ---------------------------------------------------------------
+    // Entrada de dados
+    // ---------------------------------------------------------------
+    printf("Digite 10 numeros reais:\n");   // Solicita os 10 valores ao usuário
+
+    for(int i = 0; i < 10; i++) // Laço de repetição para ler os 10 elementos
+    {
+        scanf("%f", &v[i]);                 // Lê um número real e armazena em v[i]
+    }
+
+    // ---------------------------------------------------------------
+    // Ordenação do vetor
+    // ---------------------------------------------------------------
+    for(int i = 0; i < 9; i++) // Laço externo (controla o número de passagens)
+    {
+        for(int j = i + 1; j < 10; j++)         // Laço interno (compara elementos adjacentes)
+        {
+            if(v[i] > v[j])                 // Se o elemento atual for maior que o próximo
+            {
+                temp = v[i];                // Guarda v[i] em temp (variável auxiliar)
+                v[i] = v[j];                // Move o menor valor para a posição anterior
+                v[j] = temp;                // Coloca o maior valor na posição seguinte
+            }
+        }
+    }
+
+    // ---------------------------------------------------------------
+    // Saída de dados (vetor ordenado)
+    // ---------------------------------------------------------------
+    printf("\nVetor ordenado em ordem crescente:\n");  // Cabeçalho da saída
+
+    for(int i = 0; i < 10; i++)                // Percorre o vetor já ordenado
+    {
+        printf("%.2f ", v[i]);             // Exibe cada número com 2 casas decimais
+    }
+
+    system("pause");
+    return 0;     // Finaliza o programa corretamente
+}
