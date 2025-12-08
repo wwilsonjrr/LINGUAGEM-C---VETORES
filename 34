@@ -1,0 +1,60 @@
+/*
+34. Faça um programa para ler 10 números DIFERENTES a serem armazenados em um vetor.
+Os dados deverão ser armazenados na ordem em que forem lidos,
+mas caso o usuário digite um número que já foi digitado anteriormente,
+o programa deverá pedir outro número.
+
+Cada valor digitado deve ser pesquisado no vetor antes de ser aceito.
+Exibir na tela o vetor final que foi digitado.
+*/
+
+#include <stdio.h>  // Biblioteca padrão para entrada e saída (printf, scanf)
+#include <stdlib.h>
+
+int main()
+{
+
+    int v[10];    // Vetor para armazenar os 10 números diferentes
+    int repetido; // Variável usada para verificar se o número já foi digitado
+
+    // ---------------------------------------------------------------
+    // Leitura dos números (garantindo que não haja repetidos)
+    // ---------------------------------------------------------------
+    printf("Digite 10 numeros inteiros diferentes:\n");
+
+    for(int i = 0; i < 10; i++) // Laço principal: lê 10 valores
+    {
+        do
+        {
+            repetido = 0;              // Inicialmente, assume que o número não é repetido
+
+            printf("Numero %d: ", i + 1);  // Mostra a posição (1 a 10) para o usuário
+            scanf("%d", &v[i]);            // Lê o número digitado e armazena em v[i]
+
+            // Verifica se o número já foi digitado antes
+            for(int j = 0; j < i; j++)  // Percorre os elementos já inseridos no vetor
+            {
+                if(v[i] == v[j]) // Se encontrar o mesmo número
+                {
+                    repetido = 1;          // Marca que houve repetição
+                    printf("Numero repetido! Digite outro numero.\n");
+                    break;                 // Sai do laço interno
+                }
+            }
+
+        } while(repetido == 1);            // Repete a leitura até o número ser diferente
+    }
+
+    // ---------------------------------------------------------------
+    // Exibição do vetor final sem números repetidos
+    // ---------------------------------------------------------------
+    printf("\nVetor final (sem numeros repetidos):\n");
+
+    for(int i = 0; i < 10; i++) // Percorre o vetor completo
+    {
+        printf("%d ", v[i]);               // Exibe cada número armazenado
+    }
+
+    system("pause");
+    return 0;                              // Finaliza o programa corretamente
+}
