@@ -1,0 +1,67 @@
+/*
+33. Faça um programa que leia um vetor de 15 posições e o compacte,
+ou seja, elimine as posições com valor zero.
+Para isso, todos os elementos à frente do valor zero devem ser movidos
+uma posição para trás no vetor.
+
+
+v[j] = v[j + 1];
+
+1    0    2    3
+v[0] v[1] v[2] v[3]
+
+1    2    3
+v[0] v[2] v[3]
+
+
+*/
+
+#include <stdio.h>  // Biblioteca padrão para entrada e saída (printf, scanf)
+#include <stdlib.h>
+
+int main()
+{
+
+    int v[15];      // Vetor original com 15 posições
+    int tamanho = 15; // Variável que controla o tamanho "atual" do vetor após compactação
+
+    // ---------------------------------------------------------------
+    // Entrada de dados
+    // ---------------------------------------------------------------
+    printf("Digite 15 numeros inteiros (podendo conter zeros):\n");
+
+    for(int i = 0; i < 15; i++) // Laço para ler os 15 elementos do vetor
+    {
+        scanf("%d", &v[i]);     // Lê o número digitado e armazena na posição i
+    }
+
+    // ---------------------------------------------------------------
+    // Compactação do vetor (remoção dos zeros)
+    // ---------------------------------------------------------------
+    for(int i = 0; i < tamanho; i++) // Percorre o vetor original
+    {
+        if(v[i] == 0)  // Se encontrar um elemento igual a zero
+        {
+            // Desloca todos os elementos à frente uma posição para trás
+            for(int j = i; j < tamanho - 1; j++)
+            {
+                v[j] = v[j + 1];   // Move o próximo elemento para a posição atual
+            }
+            tamanho--;             // Ele controla qtos elementos o vetor agora oficialmente tem
+            i--;                   // Ele controla a posição do índice
+        }
+    }
+
+    // ---------------------------------------------------------------
+    // Saída de dados (vetor compactado)
+    // ---------------------------------------------------------------
+    printf("\nVetor compactado (sem zeros):\n");
+
+    for(int i = 0; i < tamanho; i++)  // Imprime apenas até o novo tamanho do vetor
+    {
+        printf("%d ", v[i]);        // Exibe os valores não nulos
+    }
+
+    system("pause");
+    return 0;      // Finaliza o programa corretamente
+}
