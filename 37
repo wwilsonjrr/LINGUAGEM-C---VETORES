@@ -1,0 +1,85 @@
+/*
+37. Considere um vetor A com 11 elementos onde:
+A1 < A2 < ... < A6 > A7 > A8 > ... > A11
+
+Ou seja, o vetor está ordenado em ordem crescente até o sexto elemento,
+e a partir daí, está em ordem decrescente.
+
+Situação inicial: vetor com 11 elementos, mas com uma estrutura especial:
+
+Do índice 1 até 6 → já está em ordem crescente.
+
+Do índice 7 até 11 → está em ordem decrescente.
+
+Tarefa: aproveitar essa característica para ordenar todo o vetor em ordem crescente.
+
+*/
+
+#include <stdio.h>  // Biblioteca padrão para entrada e saída (printf, scanf)
+#include <stdlib.h>
+
+int main()
+{
+
+    int A[11];       // Declara o vetor A com 11 elementos
+    int temp;        // Variável auxiliar para trocas
+    int aux[11];     // Vetor auxiliar (caso precise inverter parte do vetor)
+
+    // ---------------------------------------------------------------
+    // Entrada de dados
+    // ---------------------------------------------------------------
+    printf("Digite os 11 elementos do vetor A:\n");  // Solicita os valores ao usuário
+
+    for(int i = 0; i < 11; i++) // Laço para ler todos os 11 elementos
+    {
+        scanf("%d", &A[i]);     // Lê e armazena cada elemento na posição i
+    }
+
+    // ---------------------------------------------------------------
+    // Etapa 1: inverter a parte decrescente do vetor
+    // (ou seja, do índice 6 até o final)
+    // ---------------------------------------------------------------
+    int inicio = 6;             // A partir do 7º elemento (índice 6, pois começa em 0)
+    int fim = 10;               // Último índice (11º elemento)
+
+    while(inicio < fim) // Enquanto não cruzarem os índices
+    {
+        temp = A[inicio];       // Guarda o valor atual em uma variável auxiliar
+        A[inicio] = A[fim];     // Troca o valor do final para o início
+        A[fim] = temp;          // Coloca o valor guardado no final
+        inicio++;               // Avança para a direita
+        fim--;                  // Retrocede para a esquerda
+    }
+
+    // Agora todo o vetor A está em ordem crescente até o final
+
+    // ---------------------------------------------------------------
+    // Etapa 2: ordenar completamente o vetor (garantia de ordenação total)
+    // Usaremos o método Bubble Sort para simplificar
+    // ---------------------------------------------------------------
+    for(int i = 0; i < 10; i++) // Laço externo (até o penúltimo elemento)
+    {
+        for(int j = i + 1; j < 11; j++) // Laço interno (compara os seguintes)
+        {
+            if(A[i] > A[j])             // Se o elemento atual for maior que o seguinte
+            {
+                temp = A[i];            // Guarda o valor em temp
+                A[i] = A[j];            // Troca as posições
+                A[j] = temp;            // Completa a troca
+            }
+        }
+    }
+
+    // ---------------------------------------------------------------
+    // Saída de dados (vetor totalmente ordenado)
+    // ---------------------------------------------------------------
+    printf("\nVetor totalmente ordenado em ordem crescente:\n");
+
+    for(int i = 0; i < 11; i++) // Percorre todas as posições do vetor
+    {
+        printf("%d ", A[i]);           // Exibe cada elemento já ordenado
+    }
+
+    system("pause");
+    return 0;      // Finaliza o programa corretamente
+}
